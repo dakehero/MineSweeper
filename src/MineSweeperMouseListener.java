@@ -1,9 +1,7 @@
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-/**
- * Created by dake_ on 2017/5/29.
- */
+
 public class MineSweeperMouseListener implements MouseListener{
     public MineSweeperMouseListener(MineSweeper mineSweeper,MineSweeperHelper mineSweeperHelper){
 

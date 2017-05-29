@@ -22,7 +22,7 @@ public class MineSweeper {
     Dimension buttonSize= new Dimension(20,20);
 
     //游戏类实例需要MineSweeper对象才能实例化
-    MineFeild mineField;
+    MineField mineField;
     MineSweeperMouseListener mouseListener;//游戏监听器
     MineSweeperActionListener actionListener;//菜单监听器
     MineSweeperHelper helper;//辅助对象
@@ -38,7 +38,7 @@ public class MineSweeper {
         //开启游戏时调用
         initMines();
         initMinesPanel();
-        mineField=new MineFeild(rows,columns,mines);
+        mineField=new MineField(rows,columns,mines);
         initControlPanel();
     }
 
