@@ -3,6 +3,7 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.io.File;
 
 public class MineSweeper {
 
@@ -14,14 +15,14 @@ public class MineSweeper {
     JFrame frame = new JFrame("MineSweeper");
     JPanel minePanel = new JPanel();
     JPanel controlPanel = new JPanel();
-    JLabel minesRemainingLable = new JLabel("Remaining:");
-    JLabel minesFoundLable = new JLabel("Found: 0");
+    JLabel minesRemainingLable = new JLabel();
+    JLabel minesFoundLable = new JLabel( "0");
 
     //雷区按钮
     JButton[][] mineButtons;
     Dimension buttonSize= new Dimension(20,20);
 
-    JButton newGameButton = new JButton("New Game");
+    JButton newGameButton = new JButton();
 
     //游戏类实例需要MineSweeper对象才能实例化
     MineField mineField;
@@ -99,22 +100,34 @@ public class MineSweeper {
         Border pandingBorder =BorderFactory.createEmptyBorder(5,5,5,5);//留下空白
 
         minesFoundLable.setBorder(pandingBorder);
-        minesFoundLable.setAlignmentX(Component.LEFT_ALIGNMENT);
-        minesRemainingLable.setBorder(pandingBorder);
-        minesRemainingLable.setAlignmentX(Component.LEFT_ALIGNMENT);
-        minesRemainingLable.setText("Reamining: "+mineField.getMinesRemaining());
+        minesFoundLable.setAlignmentX(JComponent.LEFT_ALIGNMENT);
+        minesFoundLable.setHorizontalAlignment(JLabel.CENTER);
 
-        newGameButton.setPreferredSize(new Dimension(50,30));
+        minesRemainingLable.setBorder(pandingBorder);
+        minesRemainingLable.setAlignmentX(JComponent.RIGHT_ALIGNMENT);
+        minesRemainingLable.setText(String.valueOf(mineField.getMinesRemaining()));
+        minesRemainingLable.setHorizontalAlignment(JLabel.CENTER);
+
+
+        Icon smileIcon = new ImageIcon("resource"+File.separator+"smile.png");
+        newGameButton.setIcon(smileIcon);
+        newGameButton.setPreferredSize(new Dimension(40,40));
+        newGameButton.setHorizontalAlignment(JButton.CENTER);
         newGameButton.addMouseListener(mouseListener);
 
         controlPanel.add(minesFoundLable);
         controlPanel.add(newGameButton);
         controlPanel.add(minesRemainingLable);
+
         GridLayout gridLayout=new GridLayout(1,3);
         controlPanel.setLayout(gridLayout);
-        Dimension controlPanelSize = new Dimension(0,40);
+
+
+
+        Dimension controlPanelSize = new Dimension(0,50);
         controlPanel.setPreferredSize(controlPanelSize);
-        controlPanel.setMaximumSize(new Dimension(1000,20));
+        controlPanel.setMaximumSize(new Dimension(1000,50));
+
     }
 
 

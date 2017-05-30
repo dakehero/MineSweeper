@@ -3,7 +3,8 @@ import java.io.File;
 
 public class MineIcon {
     private static Icon mineIcon=new ImageIcon("resource"+File.separator+"mineIcon.png");
-    private static Icon suspectIcon=new ImageIcon("resource"+File.separator+"flagIcon.png");
+    private static Icon suspectIcon=new ImageIcon("resource"+File.separator+"suspectIcon.png");
+    private static Icon flagIcon=new ImageIcon("resource"+File.separator+"flagIcon.png");
     private static Icon oneIcon=new ImageIcon("resource"+File.separator+"oneIcon.png");
     private static Icon twoIcon=new ImageIcon("resource"+File.separator+"twoIcon.png");
     private static Icon threeIcon=new ImageIcon("resource"+File.separator+"threeIcon.png");
@@ -19,6 +20,10 @@ public class MineIcon {
 
     public static Icon getSuspectIcon(){
         return suspectIcon;
+    }
+
+    public static Icon getFlagIcon(){
+        return flagIcon;
     }
     public static Icon getNumberIcon(int mineCount){
         switch (mineCount){

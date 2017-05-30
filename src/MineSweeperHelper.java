@@ -12,10 +12,10 @@ public class MineSweeperHelper {
 
     public void updateLabels(){
 
-        mineSweeper.minesFoundLable.setText("Found: " +
-                mineSweeper.mineField.getMinesFound());
-        mineSweeper.minesRemainingLable.setText("Remaining: " +
-                mineSweeper.mineField.getMinesRemaining());
+        mineSweeper.minesFoundLable.setText(String.valueOf(
+                mineSweeper.mineField.getMinesFound()));
+        mineSweeper.minesRemainingLable.setText(String.valueOf(
+                mineSweeper.mineField.getMinesRemaining()));
 
     }
 
@@ -35,7 +35,7 @@ public class MineSweeperHelper {
                 }
                 else{
                     if(mineSweeper.mineField.getMineFlag(i,j) == Mine.flagState.MINE){
-                        mineSweeper.mineButtons[i][j].setIcon(MineIcon.getMineIcon());
+                        mineSweeper.mineButtons[i][j].setIcon(MineIcon.getFlagIcon());
                     }
                     else if(mineSweeper.mineField.getMineFlag(i,j)==Mine.flagState.SUSPECT){
                         mineSweeper.mineButtons[i][j].setIcon(MineIcon.getSuspectIcon());
