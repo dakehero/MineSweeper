@@ -14,7 +14,7 @@ public class MineSweeperHelper {
 
         mineSweeper.minesFoundLable.setText("Found: " +
                 mineSweeper.mineField.getMinesFound());
-        mineSweeper.minesRemainingLable.setText("Remaining" +
+        mineSweeper.minesRemainingLable.setText("Remaining: " +
                 mineSweeper.mineField.getMinesRemaining());
 
     }

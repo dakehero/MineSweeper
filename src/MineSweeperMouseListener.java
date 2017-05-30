@@ -16,6 +16,11 @@ public class MineSweeperMouseListener implements MouseListener{
     @Override
     public void mouseReleased(MouseEvent e) {
         JButton clickButton = (JButton)e.getSource();
+        if(clickButton==mineSweeper.newGameButton){
+            mineSweeperHelper.newGame(mineSweeper.rows,mineSweeper.columns);
+            return;
+        }
+
         for (int i = 0; i < mineSweeper.rows; i++) {
             for (int j = 0; j < mineSweeper.columns; j++) {
                 if(clickButton == mineSweeper.mineButtons[i][j]){

@@ -21,6 +21,8 @@ public class MineSweeper {
     JButton[][] mineButtons;
     Dimension buttonSize= new Dimension(20,20);
 
+    JButton newGameButton = new JButton("New Game");
+
     //游戏类实例需要MineSweeper对象才能实例化
     MineField mineField;
     MineSweeperMouseListener mouseListener;//游戏监听器
@@ -95,14 +97,20 @@ public class MineSweeper {
 
     private void initControlPanel(){
         Border pandingBorder =BorderFactory.createEmptyBorder(5,5,5,5);//留下空白
+
         minesFoundLable.setBorder(pandingBorder);
         minesFoundLable.setAlignmentX(Component.LEFT_ALIGNMENT);
         minesRemainingLable.setBorder(pandingBorder);
         minesRemainingLable.setAlignmentX(Component.LEFT_ALIGNMENT);
         minesRemainingLable.setText("Reamining: "+mineField.getMinesRemaining());
+
+        newGameButton.setPreferredSize(new Dimension(50,30));
+        newGameButton.addMouseListener(mouseListener);
+
         controlPanel.add(minesFoundLable);
+        controlPanel.add(newGameButton);
         controlPanel.add(minesRemainingLable);
-        GridLayout gridLayout=new GridLayout(1,2);
+        GridLayout gridLayout=new GridLayout(1,3);
         controlPanel.setLayout(gridLayout);
         Dimension controlPanelSize = new Dimension(0,40);
         controlPanel.setPreferredSize(controlPanelSize);
