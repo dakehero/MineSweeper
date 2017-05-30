@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.io.File;
 
 public class MineIcon {
-    //TODO:添加图片及其路径
-    //TODO：实例化图标对象
     private static Icon mineIcon=new ImageIcon("resource"+File.separator+"mineIcon.png");
     private static Icon suspectIcon=new ImageIcon("resource"+File.separator+"flagIcon.png");
     private static Icon oneIcon=new ImageIcon("resource"+File.separator+"oneIcon.png");
