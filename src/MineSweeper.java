@@ -11,11 +11,11 @@ public class MineSweeper {
     int mines=10;
 
     //窗体部分
-    JFrame frame =new JFrame("MineSweeper");
-    JPanel minePanel =new JPanel();
-    JPanel controlPanel;
+    JFrame frame = new JFrame("MineSweeper");
+    JPanel minePanel = new JPanel();
+    JPanel controlPanel = new JPanel();
     JLabel minesRemainingLable = new JLabel("Remaining:");
-    JLabel minesFoundLable=new JLabel("Found: 0");
+    JLabel minesFoundLable = new JLabel("Found: 0");
 
     //雷区按钮
     JButton[][] mineButtons;
@@ -95,7 +95,6 @@ public class MineSweeper {
 
     private void initControlPanel(){
         Border pandingBorder =BorderFactory.createEmptyBorder(5,5,5,5);//留下空白
-        controlPanel=new JPanel();
         minesFoundLable.setBorder(pandingBorder);
         minesFoundLable.setAlignmentX(Component.LEFT_ALIGNMENT);
         minesRemainingLable.setBorder(pandingBorder);
