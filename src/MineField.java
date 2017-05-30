@@ -85,6 +85,7 @@ public class MineField {
     }
 
     public gameState resolveClick(int x, int y ,boolean left){
+        //TODO: deal with these shit!!!
         for(int i = 0 ; i < rows ; i++){
             for (int j = 0; j < columns; j++){
                 if(i == x && j == y){

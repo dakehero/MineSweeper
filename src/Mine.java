@@ -10,18 +10,44 @@ public class Mine {
     private flagState flag=flagState.UNKNOWN;
 
     public boolean hasMine(){
-        return false;
+
+        return hasMine;
     }
-    public void setMine(){}
+    public void setMine(){
+
+        hasMine=true;
+    }
     public boolean isCleared(){
-        return false;
+
+        return isCleared;
     }
-    public void clear(){}
+    public void clear(){
+
+        isCleared=true;
+    }
     public flagState getFlagState(){
-        return null;
+
+        return flag;
     }
     public flagState setFlagState(){
-        return null;
+
+        if(flag==flagState.UNKNOWN){
+            flag=flagState.MINE;
+
+            return flagState.MINE;
+        }
+        if(flag==flagState.MINE){
+            flag=flagState.SUSPECT;
+
+            return flagState.SUSPECT;
+        }
+        if(flag==flagState.SUSPECT){
+            flag=flagState.UNKNOWN;
+
+            return flagState.UNKNOWN;
+        }
+
+        return flagState.UNKNOWN;
     }
 
 

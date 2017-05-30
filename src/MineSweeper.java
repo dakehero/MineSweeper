@@ -64,7 +64,7 @@ public class MineSweeper {
         for(int i=0;i<rows;i++){
             for(int j=0;j<columns;j++){
                 JButton currentButton = new JButton();
-                currentButton.setSize(buttonSize);
+                currentButton.setPreferredSize(buttonSize);
                 currentButton.setMaximumSize(buttonSize);
                 currentButton.setMinimumSize(buttonSize);
                 currentButton.addMouseListener(mouseListener);
@@ -104,8 +104,10 @@ public class MineSweeper {
         controlPanel.add(minesFoundLable);
         controlPanel.add(minesRemainingLable);
         GridLayout gridLayout=new GridLayout(1,2);
-
         controlPanel.setLayout(gridLayout);
+        Dimension controlPanelSize = new Dimension(0,40);
+        controlPanel.setPreferredSize(controlPanelSize);
+        controlPanel.setMaximumSize(new Dimension(1000,20));
     }
 
 
@@ -133,6 +135,7 @@ public class MineSweeper {
         smallOption.addActionListener(actionListener);
         sizeOptions.add(smallOption);
         file.add(smallOption);
+        smallOption.setSelected(true);
 
         JRadioButtonMenuItem mediumOption = new JRadioButtonMenuItem("Medium (16*16,40 Mines)" );
         mediumOption.setMnemonic('m');
@@ -145,6 +148,7 @@ public class MineSweeper {
         largeOption.addActionListener(actionListener);
         sizeOptions.add(largeOption);
         file.add(largeOption);
+
 
         JMenuItem exitItem =new JMenuItem("Exit");
         exitItem.setMnemonic('x');
@@ -165,6 +169,7 @@ public class MineSweeper {
         addMenu();
 
         //TODO:重设窗体大小
+      //  frame.setPreferredSize(new Dimension(500,700));
         frame.pack();
         frame.setVisible(true);
     }
