@@ -13,7 +13,7 @@ public class MineSweeperHelper {
     public void updateLabels(){
 
         mineSweeper.minesFoundLable.setText("Found: " +
-                mineSweeper.mineField.getMinesRemaining());
+                mineSweeper.mineField.getMinesFound());
         mineSweeper.minesRemainingLable.setText("Remaining" +
                 mineSweeper.mineField.getMinesRemaining());
 
