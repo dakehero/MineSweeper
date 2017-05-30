@@ -1,18 +1,19 @@
 import javax.swing.*;
+import java.io.File;
 
 public class MineIcon {
     //TODO:添加图片及其路径
     //TODO：实例化图标对象
-    private static Icon mineIcon;
-    private static Icon suspectIcon;
-    private static Icon oneIcon;
-    private static Icon twoIcon;
-    private static Icon threeIcon;
-    private static Icon fourIcon;
-    private static Icon fiveIcon;
-    private static Icon sixIcon;
-    private static Icon sevenIcon;
-    private static Icon eightIcon;
+    private static Icon mineIcon=new ImageIcon("resource"+File.separator+"mineIcon.png");
+    private static Icon suspectIcon=new ImageIcon("resource"+File.separator+"flagIcon.png");
+    private static Icon oneIcon=new ImageIcon("resource"+File.separator+"oneIcon.png");
+    private static Icon twoIcon=new ImageIcon("resource"+File.separator+"twoIcon.png");
+    private static Icon threeIcon=new ImageIcon("resource"+File.separator+"threeIcon.png");
+    private static Icon fourIcon=new ImageIcon("resource"+File.separator+"fourIcon.png");
+    private static Icon fiveIcon=new ImageIcon("resource"+File.separator+"fiveIcon.png");
+    private static Icon sixIcon=new ImageIcon("resource"+File.separator+"sixIcon.png");
+    private static Icon sevenIcon=new ImageIcon("resource"+File.separator+"sevenIcon.png");
+    private static Icon eightIcon=new ImageIcon("resource"+File.separator+"eightIcon.png");
 
     public static Icon getMineIcon(){
         return mineIcon;
