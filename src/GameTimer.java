@@ -60,7 +60,6 @@ public class GameTimer extends JFrame implements Runnable{
         biao.setFont(new Font("Consulas",Font.PLAIN,36));
         s.setFont(new Font("Consulas",Font.PLAIN,36));
 
-        frm.pack();
     }
 
     public void start(){
