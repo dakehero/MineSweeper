@@ -1,32 +1,32 @@
 
 import java.awt.*;
-import java.awt.event.*;
-import  java.time.*;
 
 import javax.swing.*;
 
 public class GameTimer extends JFrame implements Runnable{
-    JFrame frm=new JFrame("watch");
-    JPanel bottom=new JPanel();
+    JFrame frm=new JFrame("Timer");
     JPanel mid=new JPanel();
     JLabel h=new JLabel("0");
     JLabel biao=new JLabel(":");
-    JLabel s=new JLabel("00");
+    JLabel s=new JLabel("000");
     Thread t=new Thread(this);
-    private int i=0,j=0;
+
+    private long startTime;
+    private long currentTime;
+
     public void run(){
         try
-        {
+        {/*
             while(true){
-                Thread.sleep(1000);
+                Thread.sleep(10);
                 i++;
                 if(i>=1&&i<10)
                 {
                     s.setText("0"+i);
                 }
-                else if(i>=10&&i<60)
+                else if(i>=10&&i<100)
                     s.setText(""+i);
-                if(i==60)
+                else if(i==100)
                 {
                     i=0;
                     j++;
@@ -34,17 +34,24 @@ public class GameTimer extends JFrame implements Runnable{
                     h.setText(""+j);
                 }
             }
-        }catch(Exception e){
+            */
+
+            while(true){
+                currentTime=System.currentTimeMillis();
+                s.setText(String.format("%03d",(currentTime-startTime)%1000));
+                h.setText(String.valueOf((currentTime-startTime)/1000));
+            }
+        }
+
+        catch(Exception e){
             System.out.println("Timer error!");
         }
     }
     public GameTimer()
     {
-        frm.setLayout(new BorderLayout());
         frm.setBounds(200, 200, 300, 150);
         frm.setVisible(true);
-        frm.add("South",bottom);
-        frm.add("Center",mid);
+        frm.add(mid);
 
         mid.add(h);
         mid.add(biao);
@@ -53,9 +60,11 @@ public class GameTimer extends JFrame implements Runnable{
         biao.setFont(new Font("Consulas",Font.PLAIN,36));
         s.setFont(new Font("Consulas",Font.PLAIN,36));
 
+        frm.pack();
     }
 
     public void start(){
+        startTime=System.currentTimeMillis();
         if(t.isAlive())
             t.resume();
         else t.start();
@@ -67,9 +76,6 @@ public class GameTimer extends JFrame implements Runnable{
 
     public void reset(){
             h.setText("0");
-            s.setText("00");
-            i=0;
-            j=0;
-
+            s.setText("000");
     }
 }
