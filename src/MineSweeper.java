@@ -30,6 +30,8 @@ public class MineSweeper {
     MineSweeperActionListener actionListener;//菜单监听器
     MineSweeperHelper helper;//辅助对象
 
+    GameTimer gameTimer=new GameTimer();
+
     public MineSweeper(){
         helper=new MineSweeperHelper(this);
         actionListener=new MineSweeperActionListener(this,helper);

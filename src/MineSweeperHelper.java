@@ -3,7 +3,18 @@ import java.awt.*;
 
 public class MineSweeperHelper {
 
-    private  MineSweeper mineSweeper;
+    public boolean isFirstClick() {
+        return isFirstClick;
+    }
+
+    public void setFirstClick(boolean firstClick) {
+        isFirstClick = firstClick;
+    }
+
+    private boolean isFirstClick=true;
+
+
+    private   MineSweeper mineSweeper;
 
     public MineSweeperHelper(MineSweeper mineSweeper){
 
@@ -72,11 +83,15 @@ public class MineSweeperHelper {
     }
 
     public void newGame(int previousRows, int previousColumns){
+        mineSweeper.gameTimer.reset();
+        mineSweeper.gameTimer.pause();
         for (int i = 0; i < previousRows; i++) {
             for (int j = 0; j < previousColumns; j++) {
                 mineSweeper.minePanel.remove(mineSweeper.mineButtons[i][j]);
             }
         }
+        isFirstClick=true;
+
         mineSweeper.init();
         mineSweeper.minePanel.validate();
         mineSweeper.frame.validate();
@@ -86,6 +101,7 @@ public class MineSweeperHelper {
     }
 
     public void endGame(boolean won){
+        mineSweeper.gameTimer.pause();
         showAll();
         String wonOrLost;
         int option;
