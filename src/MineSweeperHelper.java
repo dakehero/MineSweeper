@@ -84,15 +84,16 @@ public class MineSweeperHelper {
 
     public void newGame(int previousRows, int previousColumns){
         mineSweeper.gameTimer.reset();
-        mineSweeper.gameTimer.pause();
         for (int i = 0; i < previousRows; i++) {
             for (int j = 0; j < previousColumns; j++) {
                 mineSweeper.minePanel.remove(mineSweeper.mineButtons[i][j]);
             }
         }
+        System.gc();
         isFirstClick=true;
 
         mineSweeper.init();
+
         mineSweeper.minePanel.validate();
         mineSweeper.frame.validate();
         //TODO:设置窗口大小
@@ -103,7 +104,7 @@ public class MineSweeperHelper {
     public void endGame(boolean won){
         mineSweeper.gameTimer.pause();
         showAll();
-        String wonOrLost;
+        /*String wonOrLost;
         int option;
         if(won){
             wonOrLost="You won!";
@@ -119,6 +120,7 @@ public class MineSweeperHelper {
         else{
             newGame(mineSweeper.rows,mineSweeper.columns);
         }
+        */
     }
 
 }

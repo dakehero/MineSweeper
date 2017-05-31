@@ -37,6 +37,7 @@ public class GameTimer extends JFrame implements Runnable{
             */
 
             while(true){
+                Thread.sleep(1);
                 currentTime=System.currentTimeMillis();
                 s.setText(String.format("%03d",(currentTime-startTime)%1000));
                 h.setText(String.valueOf((currentTime-startTime)/1000));
@@ -75,7 +76,10 @@ public class GameTimer extends JFrame implements Runnable{
     }
 
     public void reset(){
-            h.setText("0");
-            s.setText("000");
+
+        h.setText("0");
+        s.setText("000");
+        t.suspend();
     }
 }
+

@@ -15,7 +15,7 @@ public class MineSweeperActionListener implements ActionListener {
         if(e.getActionCommand().equals("Exit")){
             System.exit(0);
         }
-        else if(e.getActionCommand().equals("New Game")){
+        else if(e.getActionCommand().equals("NewGame")){
             mineSweeperHelper.newGame(mineSweeper.rows,mineSweeper.columns);
             return;
         }
