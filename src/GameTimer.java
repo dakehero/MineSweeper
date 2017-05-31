@@ -49,7 +49,8 @@ public class GameTimer extends JFrame implements Runnable{
     }
     public GameTimer()
     {
-        frm.setBounds(200, 200, 300, 150);
+        frm.setBounds(200, 200, 300, 100);
+        frm.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frm.setVisible(true);
         frm.add(mid);
 
