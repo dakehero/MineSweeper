@@ -64,14 +64,95 @@ public class HighScore {
         }
     }
 
+public void writeHighScore(String name,int seconds,int mills,HighScoreItem.Difficulty difficulty){
+       int tmp =0;
+        if(difficulty== HighScoreItem.Difficulty.SMALL) {
+            for (int i = 0; i < 5; i++) {
+                if (tmpScoreS[i].seconds == 0) {
+                    tmpScoreS[i].usrName = name;
+                    tmpScoreS[i].seconds = seconds;
+                    tmpScoreS[i].millis = mills;
+                    tmp = 1;
+                }
+            }
+            if (tmp == 0) {
+                for (int i = 0; i < 5; i++) {
+                    if (seconds < tmpScoreS[i].seconds) {
+                        tmpScoreS[i].usrName = name;
+                        tmpScoreS[i].seconds = seconds;
+                        tmpScoreS[i].millis = mills;
+                    } else if (seconds == tmpScoreS[i].seconds) {
+                        if (mills < tmpScoreS[i].millis) {
+                            tmpScoreS[i].usrName = name;
+                            tmpScoreS[i].seconds = seconds;
+                            tmpScoreS[i].millis = mills;
+                        }
+                    }
+                }
+            }
+        }
+    if(difficulty== HighScoreItem.Difficulty.MEDIUM) {
+        for (int i = 0; i < 5; i++) {
+            if (tmpScoreM[i].seconds == 0) {
+                tmpScoreM[i].usrName = name;
+                tmpScoreM[i].seconds = seconds;
+                tmpScoreM[i].millis = mills;
+                tmp = 1;
+            }
+        }
+        if (tmp == 0) {
+            for (int i = 0; i < 5; i++) {
+                if (seconds < tmpScoreM[i].seconds) {
+                    tmpScoreM[i].usrName = name;
+                    tmpScoreM[i].seconds = seconds;
+                    tmpScoreM[i].millis = mills;
+                }
+                else if (seconds == tmpScoreM[i].seconds) {
+                    if (mills < tmpScoreM[i].millis) {
+                        tmpScoreM[i].usrName = name;
+                        tmpScoreM[i].seconds = seconds;
+                        tmpScoreM[i].millis = mills;
+                    }
+                }
+            }
+        }
+    }
+
+    if(difficulty== HighScoreItem.Difficulty.LARGE) {
+        for (int i = 0; i < 5; i++) {
+            if (tmpScoreL[i].seconds == 0) {
+                tmpScoreL[i].usrName = name;
+                tmpScoreL[i].seconds = seconds;
+                tmpScoreL[i].millis = mills;
+                tmp = 1;
+            }
+        }
+        if (tmp == 0) {
+            for (int i = 0; i < 5; i++) {
+                if (seconds < tmpScoreL[i].seconds) {
+                    tmpScoreL[i].usrName = name;
+                    tmpScoreL[i].seconds = seconds;
+                    tmpScoreL[i].millis = mills;
+                }
+                else if (seconds == tmpScoreL[i].seconds) {
+                    if (mills < tmpScoreL[i].millis) {
+                        tmpScoreL[i].usrName = name;
+                        tmpScoreL[i].seconds = seconds;
+                        tmpScoreL[i].millis = mills;
+                    }
+                }
+            }
+        }
+    }
+}
 
 
     public boolean isHighScore(int seconds,int mills,HighScoreItem.Difficulty difficulty){
         if(difficulty == HighScoreItem.Difficulty.SMALL){
             for (int i = 4; i >=0 ; i--) {
-                if(tmpScoreS[i].seconds==0){
-                    return true;
-                }
+                    if(tmpScoreS[i].seconds==0){
+                        return true;
+                    }
                 if(seconds < tmpScoreS[i].seconds ){
                     return true;
                 }
