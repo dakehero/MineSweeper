@@ -15,10 +15,22 @@ public class MineSweeperMouseListener implements MouseListener{
 
     @Override
     public void mouseReleased(MouseEvent e) {
+
         JButton clickButton = (JButton)e.getSource();
+        if(clickButton==mineSweeper.newGameButton){
+            mineSweeperHelper.newGame(mineSweeper.rows,mineSweeper.columns);
+            return;
+        }
+
         for (int i = 0; i < mineSweeper.rows; i++) {
             for (int j = 0; j < mineSweeper.columns; j++) {
                 if(clickButton == mineSweeper.mineButtons[i][j]){
+
+                    if(mineSweeperHelper.isFirstClick()){
+                        mineSweeper.gameTimer.start();
+                        mineSweeperHelper.setFirstClick(false);
+                    }
+
                     MineField.gameState state;
                     if(e.getButton() == MouseEvent.BUTTON1){
                         state = mineSweeper.mineField.resolveClick(i,j,true);

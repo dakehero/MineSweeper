@@ -3,6 +3,7 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.io.File;
 
 public class MineSweeper {
 
@@ -11,15 +12,17 @@ public class MineSweeper {
     int mines=10;
 
     //窗体部分
-    JFrame frame =new JFrame("MineSweeper");
-    JPanel minePanel =new JPanel();
-    JPanel controlPanel;
-    JLabel minesRemainingLable = new JLabel("Remaining:");
-    JLabel minesFoundLable=new JLabel("Found: 0");
+    JFrame frame = new JFrame("MineSweeper");
+    JPanel minePanel = new JPanel();
+    JPanel controlPanel = new JPanel();
+    JLabel minesRemainingLable = new JLabel();
+    JLabel minesFoundLable = new JLabel( "0");
 
     //雷区按钮
     JButton[][] mineButtons;
     Dimension buttonSize= new Dimension(20,20);
+
+    JButton newGameButton =new JButton();;
 
     //游戏类实例需要MineSweeper对象才能实例化
     MineField mineField;
@@ -27,10 +30,13 @@ public class MineSweeper {
     MineSweeperActionListener actionListener;//菜单监听器
     MineSweeperHelper helper;//辅助对象
 
+    GameTimer gameTimer=new GameTimer();
+
     public MineSweeper(){
         helper=new MineSweeperHelper(this);
         actionListener=new MineSweeperActionListener(this,helper);
         mouseListener=new MineSweeperMouseListener(this,helper);
+
         init();
     }
 
@@ -74,6 +80,7 @@ public class MineSweeper {
                 mineButtons[i][j]=currentButton;
             }
         }
+        System.gc();
     }
 
     private void initMinesPanel(){
@@ -85,7 +92,6 @@ public class MineSweeper {
             }
         }
         */
-
          for(int i=0;i<rows;i++){
              for(int j=0;j<columns;j++){
                  minePanel.add(mineButtons[i][j]);
@@ -95,19 +101,35 @@ public class MineSweeper {
 
     private void initControlPanel(){
         Border pandingBorder =BorderFactory.createEmptyBorder(5,5,5,5);//留下空白
-        controlPanel=new JPanel();
+
         minesFoundLable.setBorder(pandingBorder);
-        minesFoundLable.setAlignmentX(Component.LEFT_ALIGNMENT);
+        minesFoundLable.setAlignmentX(JComponent.LEFT_ALIGNMENT);
+        minesFoundLable.setHorizontalAlignment(JLabel.CENTER);
+
         minesRemainingLable.setBorder(pandingBorder);
-        minesRemainingLable.setAlignmentX(Component.LEFT_ALIGNMENT);
-        minesRemainingLable.setText("Reamining: "+mineField.getMinesRemaining());
+        minesRemainingLable.setAlignmentX(JComponent.RIGHT_ALIGNMENT);
+        minesRemainingLable.setText(String.valueOf(mineField.getMinesRemaining()));
+        minesRemainingLable.setHorizontalAlignment(JLabel.CENTER);
+
+        Icon smileIcon = new ImageIcon("resource"+File.separator+"smile.png");
+        newGameButton.setIcon(smileIcon);
+        newGameButton.setPreferredSize(new Dimension(40,40));
+        newGameButton.setHorizontalAlignment(JButton.CENTER);
+
+
         controlPanel.add(minesFoundLable);
+        controlPanel.add(newGameButton);
         controlPanel.add(minesRemainingLable);
-        GridLayout gridLayout=new GridLayout(1,2);
+
+        GridLayout gridLayout=new GridLayout(1,3);
         controlPanel.setLayout(gridLayout);
-        Dimension controlPanelSize = new Dimension(0,40);
+
+
+
+        Dimension controlPanelSize = new Dimension(0,50);
         controlPanel.setPreferredSize(controlPanelSize);
-        controlPanel.setMaximumSize(new Dimension(1000,20));
+        controlPanel.setMaximumSize(new Dimension(1000,50));
+
     }
 
 
@@ -157,6 +179,8 @@ public class MineSweeper {
 
         JMenuBar menuBar=new JMenuBar();
         menuBar.add(file);
+
+        newGameButton.addMouseListener(mouseListener);
 
         frame.setJMenuBar(menuBar);
     }
