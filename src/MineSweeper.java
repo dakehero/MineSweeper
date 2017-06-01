@@ -1,10 +1,14 @@
-//TODO：write a javadoc
+/**
+ * @author 全伟
+ * show 用于显示扫雷主界面，初始化游戏所需要的类
+ */
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.io.File;
 import java.util.*;
+
 
 public class MineSweeper {
 
@@ -22,7 +26,7 @@ public class MineSweeper {
     //雷区按钮
     JButton[][] mineButtons;
     Dimension buttonSize= new Dimension(20,20);
-
+    //新游戏按钮
     JButton newGameButton =new JButton();;
 
     //游戏类实例需要MineSweeper对象才能实例化
@@ -31,7 +35,9 @@ public class MineSweeper {
     MineSweeperActionListener actionListener;//菜单监听器
     MineSweeperHelper helper;//辅助对象
 
+    //游戏计时器面板对象
     GameTimer gameTimer=new GameTimer();
+
 
     public MineSweeper(){
         helper=new MineSweeperHelper(this);
@@ -42,11 +48,11 @@ public class MineSweeper {
     }
 
     public void init(){
-        //开启游戏时调用
-        initMines();
-        initMinesPanel();
+        //开启新游戏时调用
+        initMines();//初始化雷按钮
+        initMinesPanel();//初始化雷区面板
         mineField=new MineField(rows,columns,mines);
-        initControlPanel();
+        initControlPanel();//初始化控制面板
     }
 
 
@@ -81,7 +87,6 @@ public class MineSweeper {
                 mineButtons[i][j]=currentButton;
             }
         }
-        System.gc();
     }
 
     private void initMinesPanel(){
@@ -93,6 +98,7 @@ public class MineSweeper {
             }
         }
         */
+         //将地雷按钮添加到面板
          for(int i=0;i<rows;i++){
              for(int j=0;j<columns;j++){
                  minePanel.add(mineButtons[i][j]);
@@ -101,6 +107,7 @@ public class MineSweeper {
     }
 
     private void initControlPanel(){
+        //分别初始化FoundLabel，RemainingLabel newGameButton（笑脸按钮）并添加到控制面板
         Border pandingBorder =BorderFactory.createEmptyBorder(5,5,5,5);//留下空白
 
         minesFoundLable.setBorder(pandingBorder);
@@ -136,13 +143,14 @@ public class MineSweeper {
 
 
     private void addAndArrangePanels(){
+        //将两个面板添加到窗体
         frame.getContentPane().add(controlPanel);
         frame.getContentPane().add(minePanel);
-
 
     }
 
     private void addMenu(){
+        //生成并将菜单项添加到窗体
         JMenu file=new JMenu("file");
         file.setMnemonic('F');
 
@@ -187,6 +195,7 @@ public class MineSweeper {
     }
 
     private void createAndShowGUI(){
+        //组装并显示窗体
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(),BoxLayout.Y_AXIS));
 
