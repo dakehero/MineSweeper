@@ -4,6 +4,7 @@ public class Mine {
         UNKNOWN,
         MINE,
         SUSPECT
+
     }
     private boolean isCleared =false;
     private boolean hasMine =false;
