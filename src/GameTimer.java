@@ -3,44 +3,33 @@ import java.awt.*;
 
 import javax.swing.*;
 
+/**
+ * @author 全伟
+ * show 游戏计时器面板和计时功能
+ */
 public class GameTimer extends JFrame implements Runnable{
-    JFrame frm=new JFrame("Timer");
-    JPanel mid=new JPanel();
-    JLabel h=new JLabel("0");
-    JLabel biao=new JLabel(":");
-    JLabel s=new JLabel("000");
-    Thread t=new Thread(this);
+    JFrame frame = new JFrame("Timer");
+    JPanel panel = new JPanel();
 
-    private long startTime;
-    private long currentTime;
+    JLabel secondsLabel = new JLabel("0");
+    JLabel colon = new JLabel(".");
+    JLabel millis = new JLabel("000");
 
-    public void run(){
+    Thread timerThread = new Thread(this);
+
+    private long startTime;//计时器启动时间
+    private long currentTime;//当前时间
+
+    public void run(){//计时器线程
         try
-        {/*
-            while(true){
-                Thread.sleep(10);
-                i++;
-                if(i>=1&&i<10)
-                {
-                    s.setText("0"+i);
-                }
-                else if(i>=10&&i<100)
-                    s.setText(""+i);
-                else if(i==100)
-                {
-                    i=0;
-                    j++;
-                    s.setText("00");
-                    h.setText(""+j);
-                }
-            }
-            */
-
+        {
             while(true){
                 Thread.sleep(1);
+
                 currentTime=System.currentTimeMillis();
-                s.setText(String.format("%03d",(currentTime-startTime)%1000));
-                h.setText(String.valueOf((currentTime-startTime)/1000));
+
+                millis.setText(String.format("%03d",(currentTime-startTime)%1000));
+                secondsLabel.setText(String.valueOf((currentTime-startTime)/1000));
             }
         }
 
@@ -50,36 +39,40 @@ public class GameTimer extends JFrame implements Runnable{
     }
     public GameTimer()
     {
-        frm.setBounds(200, 200, 300, 100);
-        frm.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frm.setVisible(true);
-        frm.add(mid);
+        //用于初始化计时器窗口
+        frame.setBounds(200, 200, 300, 100);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        frame.add(panel);
 
-        mid.add(h);
-        mid.add(biao);
-        mid.add(s);
-        h.setFont(new Font("Consulas",Font.PLAIN,36));
-        biao.setFont(new Font("Consulas",Font.PLAIN,36));
-        s.setFont(new Font("Consulas",Font.PLAIN,36));
+        panel.add(secondsLabel);
+        panel.add(colon);
+        panel.add(millis);
+
+        secondsLabel.setFont(new Font("Consulas",Font.PLAIN,36));
+        colon.setFont(new Font("Consulas",Font.PLAIN,36));
+        millis.setFont(new Font("Consulas",Font.PLAIN,36));
 
     }
 
     public void start(){
+        //启动计时器线程
         startTime=System.currentTimeMillis();
-        if(t.isAlive())
-            t.resume();
-        else t.start();
+        if(timerThread.isAlive())
+            timerThread.resume();
+        else timerThread.start();
     }
 
     public void pause(){
-        t.suspend();
+        //暂停计时器
+        timerThread.suspend();
     }
 
     public void reset(){
-
-        h.setText("0");
-        s.setText("000");
-        t.suspend();
+        //重置计时器标签
+        secondsLabel.setText("0");
+        millis.setText("000");
+        timerThread.suspend();
     }
 }
 
