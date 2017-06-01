@@ -29,6 +29,7 @@ public class MineSweeperMouseListener implements MouseListener{
                     if(mineSweeperHelper.isFirstClick()){
                         mineSweeper.gameTimer.start();
                         mineSweeperHelper.setFirstClick(false);
+                        mineSweeper.mineField.populate(i,j);
                     }
 
                     MineField.gameState state;
