@@ -9,7 +9,8 @@ public class HighScore {
     private HighScoreItem[] tmpScoreS = new HighScoreItem[5];
     private HighScoreItem[] tmpScoreM = new HighScoreItem[5];
     private HighScoreItem[] tmpScoreL = new HighScoreItem[5];
-    private void HihgScore() throws IOException{
+
+    public void HihgScore() throws IOException{
         File file = new File("HighScoreList.txt");
         if (!file.exists()){
             file.createNewFile();

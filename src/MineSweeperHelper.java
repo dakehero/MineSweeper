@@ -104,7 +104,7 @@ public class MineSweeperHelper {
     public void endGame(boolean won){
         mineSweeper.gameTimer.pause();
         showAll();
-        /*String wonOrLost;
+        String wonOrLost;
         int option;
         if(won){
             wonOrLost="You won!";
@@ -120,7 +120,7 @@ public class MineSweeperHelper {
         else{
             newGame(mineSweeper.rows,mineSweeper.columns);
         }
-        */
+
     }
 
 }
