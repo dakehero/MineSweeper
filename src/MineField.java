@@ -166,6 +166,10 @@ public class MineField {
         }
 
         Mine thisMine=mineField[x][y];
+
+        if (thisMine.getFlagState()==Mine.flagState.MINE){
+            return gameState.CONTINUE;
+        }
         //如果这块地方没做标记，做上标记
         if(!thisMine.isCleared()){
             thisMine.clear();
