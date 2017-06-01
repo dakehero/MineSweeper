@@ -1,9 +1,9 @@
 /**
  * HighScore类，用于对HighScore进行文件写入，读取，判断分数，返回分数等工作。
- * <p>HighScore构造函数，用于初始化HighScoreItem数组，打开或建立文件并初始化文件内容。<br>
- *     writeHighScore方法，用于将新的记录写入到文件中<br>
- *         isHighScore方法，用于判断新的分数是否能够成为记录。<br>
- *             returnList方法，用于返回当前的高分榜。<br>
+ * <p><code>HighScore</code>构造函数，用于初始化HighScoreItem数组，打开或建立文件并初始化文件内容。<br>
+ *    <code>writeHighScore</code> 方法，用于将新的记录写入到文件中<br>
+ *    <code>isHighScore</code> 方法，用于判断新的分数是否能够成为记录。<br>
+ *    <code> returnList</code>方法，用于返回当前的高分榜。</p>
  * @author 伍淼
  */
 

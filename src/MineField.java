@@ -1,6 +1,6 @@
 /**
- * 王佳栋
- * 此类主要负责埋雷
+ * @author 王佳栋
+ * 此类主要负责游戏逻辑处理
  */
 public class MineField {
     private Mine[][] mineField;

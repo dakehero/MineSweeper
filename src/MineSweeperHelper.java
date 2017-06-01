@@ -1,6 +1,10 @@
 /**
  * @author 全伟
- * show 用于处理游戏后端逻辑并将结果显示到前端界面
+ * 用于处理游戏后端逻辑并将结果显示到前端界面
+ * <p><code>updateLables</code>更新已发现地雷和剩余地雷标签数字<br>
+ *    <code>updateButtons</code>更新按钮上的图标<br>
+ *    <code>newGame</code>清除面板并开启新游戏<br>
+ *    <code>endGame</code>用于停止计时器结束游戏并显示提示框</p>
  */
 import javax.swing.*;
 import java.awt.*;
@@ -65,7 +69,7 @@ public class MineSweeperHelper {
         }
     }
 
-    public  void showAll(){
+    private void showAll(){
         //当游戏结束时显示全部图标
         for (int i = 0; i < mineSweeper.rows; i++) {
             for (int j = 0; j < mineSweeper.columns; j++) {

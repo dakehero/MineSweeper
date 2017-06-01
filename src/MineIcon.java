@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.io.File;
 
+/**
+ * 本类用于读取和加载各种图片
+ * @author 陈钰元
+ */
 public class MineIcon {
     private static Icon mineIcon=new ImageIcon("resource"+File.separator+"mineIcon.png");
     private static Icon suspectIcon=new ImageIcon("resource"+File.separator+"suspectIcon.png");

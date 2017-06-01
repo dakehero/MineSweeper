@@ -5,7 +5,7 @@ import javax.swing.*;
 
 /**
  * @author 全伟
- * show 游戏计时器面板和计时功能
+ * 游戏计时器面板和计时功能
  */
 public class GameTimer extends JFrame implements Runnable{
     JFrame frame = new JFrame("Timer");
