@@ -6,6 +6,7 @@ import javax.swing.*;
 /**
  * @author 全伟
  * 游戏计时器面板和计时功能
+ * 实现Runnable接口，以创建多线程
  */
 public class GameTimer extends JFrame implements Runnable{
     JFrame frame = new JFrame("Timer");
@@ -15,7 +16,8 @@ public class GameTimer extends JFrame implements Runnable{
     JLabel colon = new JLabel(".");
     JLabel millis = new JLabel("000");
 
-    Thread timerThread = new Thread(this);
+    Thread timerThread = new Thread(this);//使用自身创建多线程计时
+
 
     private long startTime;//计时器启动时间
     private long currentTime;//当前时间

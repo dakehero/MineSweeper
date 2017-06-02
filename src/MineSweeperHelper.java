@@ -1,6 +1,6 @@
 /**
  * @author 全伟
- * 用于处理游戏后端逻辑并将结果显示到前端界面
+ * 游戏辅助类，用于调用后端处理游戏逻辑并将结果显示到前端界面
  * <p><code>updateLables</code>更新已发现地雷和剩余地雷标签数字<br>
  *    <code>updateButtons</code>更新按钮上的图标<br>
  *    <code>newGame</code>清除面板并开启新游戏<br>
@@ -12,9 +12,8 @@ import java.awt.*;
 
 public class MineSweeperHelper {
 
-    private boolean isFirstClick;//是否为第一次点击
-
     private MineSweeper mineSweeper;
+    private boolean isFirstClick;//是否为第一次点击
 
     public MineSweeperHelper(MineSweeper mineSweeper){
         isFirstClick=true;

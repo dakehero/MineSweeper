@@ -1,6 +1,6 @@
 /**
  * @author 全伟
- * 用于显示扫雷主界面，初始化游戏所需要的类
+ * 游戏主类，用于显示扫雷主界面，初始化游戏所需要的类
  */
 
 import javax.swing.*;
@@ -17,17 +17,17 @@ public class MineSweeper {
     int mines=10;
 
     //窗体部分
-    JFrame frame = new JFrame("MineSweeper");
-    JPanel minePanel = new JPanel();
-    JPanel controlPanel = new JPanel();
-    JLabel minesRemainingLable = new JLabel();
-    JLabel minesFoundLable = new JLabel( "0");
+    JFrame frame = new JFrame("MineSweeper");//主窗体
+    JPanel minePanel = new JPanel();//雷区面板
+    JPanel controlPanel = new JPanel();//控制区面板
+    JLabel minesRemainingLable = new JLabel();//剩余地雷标签
+    JLabel minesFoundLable = new JLabel( "0");//已发现地雷标签
 
-    //雷区按钮
-    JButton[][] mineButtons;
+    //按钮部分
+    JButton[][] mineButtons;  //雷区按钮
     Dimension buttonSize= new Dimension(20,20);
     //新游戏按钮
-    JButton newGameButton =new JButton();;
+    JButton newGameButton =new JButton();
 
     //游戏类实例需要MineSweeper对象才能实例化
     MineField mineField;
@@ -197,20 +197,20 @@ public class MineSweeper {
     private void createAndShowGUI(){
         //组装并显示窗体
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(),BoxLayout.Y_AXIS));
+        frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(),BoxLayout.Y_AXIS));//布局管理器（垂直布局）
 
-        addAndArrangePanels();
-        addMenu();
+        addAndArrangePanels();//添加面板
+        addMenu();//添加菜单栏
 
         //TODO:重设窗体大小
       //  frame.setPreferredSize(new Dimension(500,700));
         frame.pack();
-        frame.setVisible(true);
+        frame.setVisible(true);//窗体可视
     }
 
     public static void main(String[] args){
-        MineSweeper mineSweeper =new MineSweeper();
-        mineSweeper.createAndShowGUI();
+        MineSweeper mineSweeper =new MineSweeper();//实例化游戏类并初始化全部相关组件
+        mineSweeper.createAndShowGUI();//显示游戏界面
 
     }
 
